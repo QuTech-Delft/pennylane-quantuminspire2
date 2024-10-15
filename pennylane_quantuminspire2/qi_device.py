@@ -1,12 +1,8 @@
-import pennylane as qml
-from pennylane import numpy as np
+from pennylane_qiskit import RemoteDevice
+from qiskit_quantuminspire.qi_backend import QIBackend
 
-class QIDevice(qml.QubitDevice):
-    name = 'Qubit Device for Quantum Inspire 2'
-    short_name = 'custom.qubit'
-    pennylane_requires = '>=0.23'
-    version = '0.0.1'
-    author = 'QuTech'
+class QI2Device(RemoteDevice):
 
-    operations = {"RX", "RY", "RZ", "PhaseShift"}
-    observables = {"PauliX", "PauliZ"}
+    def __init__(self, backend: QIBackend, **kwargs) -> None:
+        super().__init__(wires=backend.num_qubits, backend=backend,
+                         shots=backend.default_shots, **kwargs)
