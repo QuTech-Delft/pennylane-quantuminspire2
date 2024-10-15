@@ -1,10 +1,11 @@
 import pytest
-from qiskit_quantuminspire.qi_backend import QIBackend
 from compute_api_client import BackendStatus, BackendType
+from qiskit_quantuminspire.qi_backend import QIBackend
+
 
 @pytest.fixture
 def QI2_backend() -> BackendType:
-    """ Backend fixture for fields we care about."""
+    """Backend fixture for fields we care about."""
     backend_type = BackendType(
         name="qi_backend",
         nqubits=3,
