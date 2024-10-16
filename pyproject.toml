@@ -18,6 +18,8 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
+pennylane-qiskit = "^0.38.1"
+qiskit-quantuminspire = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"
