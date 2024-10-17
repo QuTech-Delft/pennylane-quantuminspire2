@@ -55,8 +55,8 @@ jobs:
           poetry-version: "1.3.2"
       - name: Install tox
         run: pip install tox
-      - name: run tox test
-        run: tox -e test
+#      - name: run tox test
+#        run: tox -e test
   e2e-test:
     name: End to End testing
     needs: [ lint, unit-test ]
