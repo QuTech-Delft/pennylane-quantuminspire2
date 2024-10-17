@@ -1,11 +1,18 @@
-import pennylane_quantuminspire2  # noqa: F401
-from mypyc.common import short_name
+import argparse
+import asyncio
+import os
+import time
+from pathlib import Path
+from typing import cast
+
+import numpy as np
+import pennylane as qml
+import requests
+from compute_api_client import ApiClient, Configuration, Member, MembersApi, PageMember
 
 from pennylane_quantuminspire2.api.pagination import PageReader
 from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
 
-import pennylane as qml
-import numpy as np
 
 async def _fetch_team_member_id(host: str, access_token: str) -> int:
     config = Configuration(host=host, access_token=access_token)
@@ -61,13 +68,14 @@ def _get_auth_tokens() -> None:
 
 
 def _run_e2e_tests(name: str) -> None:
+    # Step 1: Select QML device
     e2e_device = qml.device("quantum_inspire.{}".format(name), wires=2, shots=10)
 
     # Step 2: Create a quantum circuit
     @qml.qnode(e2e_device)
-    def my_quantum_circuit(params):
-        qml.RX(params[0], wires=0)  # Apply an RX gate to qubit 0
-        qml.RY(params[1], wires=1)  # Apply an RY gate to qubit 1
+    def my_quantum_circuit(circuit_params):# type: ignore
+        qml.RX(circuit_params[0], wires=0)  # Apply an RX gate to qubit 0
+        qml.RY(circuit_params[1], wires=1)  # Apply an RY gate to qubit 1
         qml.CNOT(wires=[0, 1])  # Apply a CNOT gate
         return qml.expval(qml.PauliZ(0))  # Measure the expectation value of PauliZ on qubit 0
 
@@ -84,9 +92,11 @@ def _run_e2e_tests(name: str) -> None:
     for i in range(100):
         params = opt.step(my_quantum_circuit, params)
 
+
 def main(name: str) -> None:
     _get_auth_tokens()
     _run_e2e_tests(name=name)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run E2E test on a backend.")
