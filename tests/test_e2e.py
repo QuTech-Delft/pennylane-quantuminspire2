@@ -73,7 +73,7 @@ def _run_e2e_tests(name: str) -> None:
 
     # Step 2: Create a quantum circuit
     @qml.qnode(e2e_device)
-    def my_quantum_circuit(circuit_params):# type: ignore
+    def my_quantum_circuit(circuit_params):  # type: ignore
         qml.RX(circuit_params[0], wires=0)  # Apply an RX gate to qubit 0
         qml.RY(circuit_params[1], wires=1)  # Apply an RY gate to qubit 1
         qml.CNOT(wires=[0, 1])  # Apply a CNOT gate
