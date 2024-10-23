@@ -1,4 +1,5 @@
 from typing import Sequence
+from unittest.mock import MagicMock
 
 import pennylane as qml
 from compute_api_client import BackendType
@@ -17,8 +18,12 @@ def test_device_circuit(mocker: MockerFixture, QI2_backend: QIBackend) -> None:
         qml.Hadamard(wires=[0])
         return qml.expval(qml.PauliX(wires=[0]))
 
-    mocker.patch("qiskit_quantuminspire.qi_backend.QIJob")
+    mock_job = MagicMock()
+    mock_submit = MagicMock()
+    mock_job.submit = mock_submit
+    mocker.patch("qiskit_quantuminspire.qi_backend.QIJob", return_value=mock_job)
     assert quantum_function() is not None
+    mock_job.submit.assert_called()
 
 
 def test_device_backends(mocker: MockerFixture, backend_repository: Sequence[BackendType]) -> None:
