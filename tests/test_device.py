@@ -1,12 +1,13 @@
 from typing import Sequence
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 import pennylane as qml
 from compute_api_client import BackendType
 from pytest_mock import MockerFixture
 from qiskit_quantuminspire.qi_backend import QIBackend
 
-from pennylane_quantuminspire2.qi_device import QI2Device
+with patch("qiskit_quantuminspire.qi_provider.QIProvider"):
+    from pennylane_quantuminspire2.qi_device import QI2Device
 
 
 def test_device_circuit(mocker: MockerFixture, QI2_backend: QIBackend) -> None:
