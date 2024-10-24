@@ -13,7 +13,7 @@ class QI2Device(RemoteDevice):  # type: ignore[misc]
         super().__init__(wires=backend.num_qubits, backend=backend, shots=backend.default_shots, **kwargs)
 
     @classmethod
-    def get_backends(cls) -> Sequence[QIBackend]:
+    def backends(cls) -> Sequence[QIBackend]:
         return cls._qi_provider.backends()  # type: ignore[no-any-return]
 
     @classmethod

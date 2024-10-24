@@ -32,7 +32,7 @@ def test_device_backends(mocker: MockerFixture, backend_repository: Sequence[Bac
     provider_mock.backends.return_value = backend_repository
     QI2Device._qi_provider = provider_mock
     # Act
-    backends = QI2Device.get_backends()
+    backends = QI2Device.backends()
 
     # Assert
     provider_mock.backends.assert_called_once()
