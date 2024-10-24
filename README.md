@@ -22,7 +22,7 @@ and [hardware backends](https://www.quantum-inspire.com/kbase/hardware-backends/
 
 ### Emulator backends
 
-* `QX single-node simulator` - Quantum Inspire emulator run on a commodity cloud-based server, with 4GB RAM. It has a fast turn-around time for simulations up to 26 qubits. For basic users, the commodity cloud-based server will be sufficient.
+* `QX emulator` - Quantum Inspire emulator run on a commodity cloud-based server, with 4GB RAM. It has a fast turn-around time for simulations up to 26 qubits. For basic users, the commodity cloud-based server will be sufficient.
 
 ## Installation
 
@@ -43,6 +43,32 @@ pip install -e pluginpath
 ```
 
 where `pluginpath` is the location of the plugin. It will then be accessible via PennyLane.
+
+## Submitting a Pennylane Circuit
+
+Once a backend has been specified, it may be used to submit circuits.
+For example, running a Bell State:
+
+```python
+import pennylane as qml
+from pennylane_quantuminspire2.qi_device import QI2Device
+
+# Obtain a specific backend by name (get_backends() returns all)
+backend = QI2Device.get_backend("Spin")
+
+# create the pennylane device from the desired backend
+device = QI2Device(backend=backend)
+
+# Create the quantum function
+@qml.qnode(device=device)
+def quantum_function():
+    qml.Hadamard(wires=[0])
+    return qml.expval(qml.PauliX(wires=[0]))
+
+# Run the quantum funciont
+print(quantum_function())
+
+```
 
 ## Contributing
 
@@ -65,4 +91,4 @@ tox -e test
 [Apache License 2.0].
 
 [quantum inspire]: https://www.quantum-inspire.com/
-[apache license 2.0]: https://github.com/qiskit-partners/qiskit-ionq/blob/master/LICENSE.txt
+[apache license 2.0]: https://github.com/PennyLaneAI/pennylane/blob/master/LICENSE
