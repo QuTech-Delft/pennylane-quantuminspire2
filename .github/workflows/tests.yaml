@@ -64,8 +64,8 @@ jobs:
     strategy:
       matrix:
         backend-name:
-          - "stubbed"
-          - "qx_emulator"
+          - "Stubbed"
+          - "QX emulator"
     env:
       E2E_USERNAME: ${{ secrets.E2E_USERNAME }}
       E2E_PASSWORD: ${{ secrets.E2E_PASSWORD }}
