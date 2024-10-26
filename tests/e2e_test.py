@@ -12,6 +12,7 @@ from compute_api_client import ApiClient, Configuration, Member, MembersApi, Pag
 
 from pennylane_quantuminspire2.api.pagination import PageReader
 from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
+from pennylane_quantuminspire2.qi_device import QI2Device
 
 
 async def _fetch_team_member_id(host: str, access_token: str) -> int:
@@ -67,9 +68,10 @@ def _get_auth_tokens() -> None:
     ApiSettings(auths={host: auth_settings}, default_host=host).store_tokens(host=host, tokens=TokenInfo(**token_info))
 
 
-def _run_e2e_tests(name: str) -> None:
+def _run_e2e_tests(backend_name: str) -> None:
     # Step 1: Select QML device
-    e2e_device = qml.device("quantum_inspire.{}".format(name), wires=2, shots=10)
+    backend = QI2Device.get_backend(backend_name)
+    e2e_device = QI2Device(backend=backend)
 
     # Step 2: Create a quantum circuit
     @qml.qnode(e2e_device)
@@ -95,7 +97,7 @@ def _run_e2e_tests(name: str) -> None:
 
 def main(name: str) -> None:
     _get_auth_tokens()
-    _run_e2e_tests(name=name)
+    _run_e2e_tests(backend_name=name)
 
 
 if __name__ == "__main__":
