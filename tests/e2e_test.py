@@ -7,8 +7,8 @@ from typing import cast
 
 import pennylane as qml
 import requests
-from pennylane import numpy as np
 from compute_api_client import ApiClient, Configuration, Member, MembersApi, PageMember
+from pennylane import numpy as np
 
 from pennylane_quantuminspire2.api.pagination import PageReader
 from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
@@ -70,6 +70,7 @@ def _get_auth_tokens() -> None:
 
 def _run_e2e_tests(backend_name: str) -> None:
     from pennylane_quantuminspire2.qi_device import QI2Device
+
     # Step 1: Select QML device
     backend = QI2Device.get_backend(backend_name)
     e2e_device = QI2Device(backend=backend)
