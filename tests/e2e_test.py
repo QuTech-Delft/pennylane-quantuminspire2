@@ -5,14 +5,13 @@ import time
 from pathlib import Path
 from typing import cast
 
-import numpy as np
 import pennylane as qml
 import requests
+from pennylane import numpy as np
 from compute_api_client import ApiClient, Configuration, Member, MembersApi, PageMember
 
 from pennylane_quantuminspire2.api.pagination import PageReader
 from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
-from pennylane_quantuminspire2.qi_device import QI2Device
 
 
 async def _fetch_team_member_id(host: str, access_token: str) -> int:
@@ -70,6 +69,7 @@ def _get_auth_tokens() -> None:
 
 
 def _run_e2e_tests(backend_name: str) -> None:
+    from pennylane_quantuminspire2.qi_device import QI2Device
     # Step 1: Select QML device
     backend = QI2Device.get_backend(backend_name)
     e2e_device = QI2Device(backend=backend)
@@ -83,17 +83,21 @@ def _run_e2e_tests(backend_name: str) -> None:
         return qml.expval(qml.PauliZ(0))  # Measure the expectation value of PauliZ on qubit 0
 
     # Step 3: Initialize some parameters
-    params = np.array([0.1, 0.2])
+    params = np.array([0.1, 0.2], requires_grad=True)
 
     # Step 4: Execute the circuit
     result = my_quantum_circuit(params)
-    print(f"Expectation value: {result}")
+    print(f"Params: {params}")
+    print(f"Result: {result}")
 
     # Step 5: Perform optimization (optional)
     # For example, use gradient descent to minimize the output
     opt = qml.GradientDescentOptimizer(stepsize=0.1)
-    for i in range(100):
+    for i in range(3):
         params = opt.step(my_quantum_circuit, params)
+    result = my_quantum_circuit(params)
+    print(f"Optimized params: {params}")
+    print(f"Optimized result: {result}")
 
 
 def main(name: str) -> None:
