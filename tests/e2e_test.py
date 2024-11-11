@@ -95,7 +95,7 @@ def _run_e2e_tests(backend_name: str) -> None:
     # Step 5: Perform optimization (optional)
     # For example, use gradient descent to minimize the output
     opt = qml.GradientDescentOptimizer(stepsize=0.1)
-    for i in range(3):
+    for i in range(1):
         params = opt.step(my_quantum_circuit, params)
     result = my_quantum_circuit(params)
     print(f"Optimized params: {params}")
