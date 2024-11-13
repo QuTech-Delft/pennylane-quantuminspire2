@@ -1840,13 +1840,13 @@ websocket-client = ">=1.5.1"
 
 [[package]]
 name = "qiskit-quantuminspire"
-version = "0.1.1"
+version = "0.2.0"
 description = "Qiskit provider for Quantum Inspire backends"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "qiskit_quantuminspire-0.1.1-py3-none-any.whl", hash = "sha256:92310cd1d58ac078ff0ddbcba916a957b857ea40e7a5d0de106318956a0b0f8b"},
-    {file = "qiskit_quantuminspire-0.1.1.tar.gz", hash = "sha256:286d2922a967967cb5e7136adfd24e6a40ba85e9ef6a1bcead54ae19be7ef443"},
+    {file = "qiskit_quantuminspire-0.2.0-py3-none-any.whl", hash = "sha256:c39926e545d3d5cca4334c24e39991ca068da9eee6b6394a384c5dbd9d0d7f59"},
+    {file = "qiskit_quantuminspire-0.2.0.tar.gz", hash = "sha256:c1a56ada29478382d5f7588e3dfdf0eb276d88cfb822b00fbe9692dde006d5ec"},
 ]
 
 [package.dependencies]
@@ -2420,4 +2420,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "4f2db92011b0eacb72bc18f2c9465ca3226e501a37c6b74558951cc75bebea7a"
+content-hash = "b8bde881ecf65dbb6dedb58067ff0b8ea4ee041ba71a7fd153cc332957c9f5db"
