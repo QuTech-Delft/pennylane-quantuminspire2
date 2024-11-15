@@ -25,7 +25,7 @@ qiskit-quantuminspire = "^0.2.0"
 qi-compute-api-client = "^0.35.0"
 requests = "^2.32.3"
 black = "^24.4.2"
-coverage = {extras = ["toml"], version = "^7.6.4"}
+coverage = {extras = ["toml"], version = "^7.6.5"}
 docformatter = "1.7.5"
 mypy = "^1.13"
 pytest = {extras = ["toml"], version = "^8.3.1"}
