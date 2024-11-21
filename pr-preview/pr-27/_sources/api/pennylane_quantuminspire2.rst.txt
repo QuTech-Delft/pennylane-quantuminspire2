@@ -1,0 +1,29 @@
+pennylane\_quantuminspire2 package
+==================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pennylane_quantuminspire2.api
+
+Submodules
+----------
+
+pennylane\_quantuminspire2.qi\_device module
+--------------------------------------------
+
+.. automodule:: pennylane_quantuminspire2.qi_device
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pennylane_quantuminspire2
+   :members:
+   :undoc-members:
+   :show-inheritance:
