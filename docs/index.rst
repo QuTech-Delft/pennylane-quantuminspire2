@@ -1,13 +1,12 @@
-======================
+=========================
 Pennylane-QuantumInspire2
-======================
+=========================
 
 Welcome to the documentation of **Pennylane-QuantumInspire2**, a Pennylane plugin for the Quantum Inspire platform.
 
 .. toctree::
    :hidden:
 
-   Documentation Home <index>
    Getting Started <getting_started/index>
    Example Notebooks <notebooks/index>
    Contributing and Development <contributing>
