@@ -4,7 +4,7 @@ This project uses Poetry for package management and tox for managing testing/lin
 
 ## Setting up a development environment
 
-Ensure both Poetry and tox installed (using [pipx](https://github.com/pypa/pipx) is recommended):
+Ensure both Poetry and tox are installed (using [pipx](https://github.com/pypa/pipx) is recommended):
 
 ```bash
 pipx install poetry
