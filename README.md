@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/qutech-delft/qiskit-quantuminspire.svg?style=popout-square)](https://opensource.org/licenses/Apache-2.0)
 
-**PennyLane** is an open-source SDK for quantum programming.
+**[PennyLane]** is an open-source SDK for quantum programming.
 This project contains a provider that allows access to **[Quantum Inspire]** quantum systems.
 
 ## Getting started
@@ -14,3 +14,4 @@ All information needed to get started using this plugin can be found in our [doc
 3. [Example notebooks](https://qutech-delft.github.io/pennylane-quantuminspire2/notebooks/index.html)
 
 [quantum inspire]: https://www.quantum-inspire.com/
+[pennylane]: https://pennylane.ai/
