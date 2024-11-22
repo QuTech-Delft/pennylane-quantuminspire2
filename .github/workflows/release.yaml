@@ -15,14 +15,49 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.8"
+
       - name: Install poetry
         uses: abatilo/actions-poetry@v3
         with:
           poetry-version: "1.3.2"
-      - name: Version poetry package
-        run: poetry version "${{  github.ref_name }}"
+
+      - name: Install tox
+        run: pip install tox
+
+      # Setting the proper version
+      - name: Get previous Tag
+        if: github.ref == 'refs/heads/master'
+        id: previous_tag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: 0.1.0
+
+      - name: Set Build version
+        if: github.ref == 'refs/heads/master'
+        run: poetry version "${{ steps.previous_tag.outputs.tag }}.dev${{ github.run_number }}"
+        
+      - name: Set Release version
+        if: github.event_name == 'release' && github.event.action == 'created'
+        run: poetry version ${{ github.ref_name }}
+
+      # Build and deploy docs
+      - name: Build docs
+        if: github.ref == 'refs/heads/master'
+        run: |
+          tox -e docs
+
+      - name: Deploy docs
+        if: github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html/
+
+      # Build package
       - name: Build poetry package
         run: poetry build
+
+      # Publish to TestPyPI
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
