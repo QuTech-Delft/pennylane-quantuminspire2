@@ -10,7 +10,7 @@ class QI2Device(RemoteDevice):  # type: ignore[misc]
     _qi_provider = QIProvider()
 
     def __init__(self, backend: QIBackend, **kwargs: Any) -> None:
-        super().__init__(wires=backend.num_qubits, backend=backend, shots=backend.default_shots, **kwargs)
+        super().__init__(wires=backend.num_qubits, backend=backend, **kwargs)
 
     @classmethod
     def backends(cls) -> Sequence[QIBackend]:
