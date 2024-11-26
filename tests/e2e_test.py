@@ -31,12 +31,13 @@ def _get_auth_tokens() -> None:
     IDP_URL_STAGING = "https://quantum-inspire-staging.eu.auth0.com"
     QI2_DEFAULT_HOST = "https://staging.qi2.quantum-inspire.com"
 
+    CLIENT_ID = "Yz7ni9PUAyT43eUASZfmc1yqI66QxLUJ"
     E2E_USERNAME = os.getenv("E2E_USERNAME")
     E2E_PASSWORD = os.getenv("E2E_PASSWORD")
 
     payload = {
         "grant_type": "password",
-        "client_id": "JOggYaBeGIkApEPIlQDZk8061Q8qHl4v",
+        "client_id": CLIENT_ID,
         "username": E2E_USERNAME,
         "password": E2E_PASSWORD,
         "scope": "api-access openid profile email offline_access",
@@ -54,7 +55,7 @@ def _get_auth_tokens() -> None:
     host = QI2_DEFAULT_HOST
     member_id = asyncio.run(_fetch_team_member_id(host=host, access_token=token_info["access_token"]))
     auth_settings = AuthSettings(
-        client_id="Yz7ni9PUAyT43eUASZfmc1yqI66QxLUJ",
+        client_id=CLIENT_ID,
         code_challenge_method="S256",
         code_verifyer_length=64,
         well_known_endpoint=f"{IDP_URL_STAGING}/.well-known/openid-configuration",
@@ -94,8 +95,7 @@ def _run_e2e_tests(backend_name: str) -> None:
     # Step 5: Perform optimization (optional)
     # For example, use gradient descent to minimize the output
     opt = qml.GradientDescentOptimizer(stepsize=0.1)
-    for i in range(3):
-        params = opt.step(my_quantum_circuit, params)
+    params = opt.step(my_quantum_circuit, params)
     result = my_quantum_circuit(params)
     print(f"Optimized params: {params}")
     print(f"Optimized result: {result}")
