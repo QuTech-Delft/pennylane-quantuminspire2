@@ -55,7 +55,7 @@ def _get_auth_tokens() -> None:
     host = QI2_DEFAULT_HOST
     member_id = asyncio.run(_fetch_team_member_id(host=host, access_token=token_info["access_token"]))
     auth_settings = AuthSettings(
-        client_id="Yz7ni9PUAyT43eUASZfmc1yqI66QxLUJ",
+        client_id=CLIENT_ID,
         code_challenge_method="S256",
         code_verifyer_length=64,
         well_known_endpoint=f"{IDP_URL_STAGING}/.well-known/openid-configuration",
@@ -95,8 +95,7 @@ def _run_e2e_tests(backend_name: str) -> None:
     # Step 5: Perform optimization (optional)
     # For example, use gradient descent to minimize the output
     opt = qml.GradientDescentOptimizer(stepsize=0.1)
-    for i in range(3):
-        params = opt.step(my_quantum_circuit, params)
+    params = opt.step(my_quantum_circuit, params)
     result = my_quantum_circuit(params)
     print(f"Optimized params: {params}")
     print(f"Optimized result: {result}")
