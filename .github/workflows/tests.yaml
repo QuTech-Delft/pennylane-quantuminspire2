@@ -59,7 +59,7 @@ jobs:
         run: tox -e test
   e2e-test:
     name: End to End testing
-    needs: [ lint, unit-test ]
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -86,7 +86,7 @@ jobs:
   complete:
     # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
     name: Report status
-    needs: [lint, unit-test]
+    needs: [lint, unit-test, e2e-test]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
@@ -102,7 +102,7 @@ jobs:
         run: exit 1
   auto-merge-dependabot:
     name: Auto merge dependabot PR
-    needs: [lint, unit-test]
+    needs: complete
     if: ${{ (github.event_name == 'pull_request') && (github.actor == 'dependabot[bot]') }}
     runs-on: ubuntu-latest
     permissions:
