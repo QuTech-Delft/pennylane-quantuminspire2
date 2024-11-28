@@ -1,6 +1,10 @@
 name: Releases
 
 on:
+  pull_request:
+  push:
+    branches:
+      - master
   release:
     types:
       - created
@@ -59,6 +63,7 @@ jobs:
 
       # Publish to TestPyPI
       - name: Publish distribution 📦 to PyPI
+        if: github.event_name == 'release' && github.event.action == 'created'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
