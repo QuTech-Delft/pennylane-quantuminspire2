@@ -18,4 +18,6 @@ class QI2Device(RemoteDevice):  # type: ignore[misc]
 
     @classmethod
     def get_backend(cls, name: Optional[str] = None, id: Optional[int] = None) -> QIBackend:
-        return cls._qi_provider.get_backend(name, id)
+        backend = cls._qi_provider.get_backend(name, id)
+        backend.set_options(memory=True)
+        return backend
