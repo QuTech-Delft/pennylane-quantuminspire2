@@ -45,4 +45,4 @@ For example, running a Bell State:
     print(result)
 
 .. warning::
-    Only :code:`qml.expval()` and :code:`qml.var()` are currently supported for measurements.
+    Other measurements than :code:`qml.expval()` and :code:`qml.var()` are only supported for backends that support shot memory.
