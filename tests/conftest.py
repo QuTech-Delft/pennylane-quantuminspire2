@@ -22,6 +22,7 @@ def create_backend(id: int = 1, name: str = "qi_backend") -> BackendType:
         infrastructure="QCI",
         description="A Quantum Inspire backend",
         native_gateset="",
+        supports_raw_data=False,
     )
     return QIBackend(backend_type=backend_type)
 
