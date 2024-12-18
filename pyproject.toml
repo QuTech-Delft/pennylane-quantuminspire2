@@ -19,17 +19,12 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.9"
 pennylane-qiskit = "^0.39.1"
-<<<<<<< Updated upstream
 qiskit-quantuminspire = "^0.3.0"
 
 [tool.poetry.group.dev.dependencies]
-qi-compute-api-client = "^0.39.0"
-=======
-qiskit-quantuminspire = "^0.2.0"
 qi-compute-api-client = "^0.40.0"
 
 [tool.poetry.group.dev.dependencies]
->>>>>>> Stashed changes
 requests = "^2.32.3"
 black = {extras = ["jupyter"], version = "^24.4.2"}
 coverage = {extras = ["toml"], version = "^7.6.10"}
