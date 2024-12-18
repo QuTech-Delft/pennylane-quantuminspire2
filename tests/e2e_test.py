@@ -10,8 +10,8 @@ import requests
 from compute_api_client import ApiClient, Configuration, Member, MembersApi, PageMember
 from pennylane import numpy as np
 
-from pennylane_quantuminspire2.api.pagination import PageReader
-from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
+from compute_api_client.shared.pagination import PageReader
+from compute_api_client.shared.settings import ApiSettings, AuthSettings, TokenInfo
 
 
 async def _fetch_team_member_id(host: str, access_token: str) -> int:
