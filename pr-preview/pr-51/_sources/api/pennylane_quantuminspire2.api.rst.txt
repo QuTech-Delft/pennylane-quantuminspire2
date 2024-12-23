@@ -1,0 +1,23 @@
+pennylane\_quantuminspire2.api namespace
+========================================
+
+.. py:module:: pennylane_quantuminspire2.api
+
+Submodules
+----------
+
+pennylane\_quantuminspire2.api.pagination module
+------------------------------------------------
+
+.. automodule:: pennylane_quantuminspire2.api.pagination
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pennylane\_quantuminspire2.api.settings module
+----------------------------------------------
+
+.. automodule:: pennylane_quantuminspire2.api.settings
+   :members:
+   :undoc-members:
+   :show-inheritance:
