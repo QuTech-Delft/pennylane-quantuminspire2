@@ -1,17 +1,7 @@
 import argparse
-import asyncio
-import os
-import time
-from pathlib import Path
-from typing import cast
 
 import pennylane as qml
-import requests
-from compute_api_client import ApiClient, Configuration, Member, MembersApi, PageMember
 from pennylane import numpy as np
-
-from pennylane_quantuminspire2.api.pagination import PageReader
-from pennylane_quantuminspire2.api.settings import ApiSettings, AuthSettings, TokenInfo
 
 
 def _run_e2e_tests(backend_name: str) -> None:
