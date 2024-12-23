@@ -21,7 +21,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "# Be sure to have logged in to the QI2 platform via the SDK. If you have installed it in the same environment as \n",
+    "# Be sure to have logged in to the QI2 platform via the SDK. If you have installed it in the same environment as\n",
     "# this notebook, you may run this cell.\n",
     "\n",
     "!qi login \"https://staging.qi2.quantum-inspire.com\""
