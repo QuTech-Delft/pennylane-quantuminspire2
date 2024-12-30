@@ -22,7 +22,6 @@ pennylane-qiskit = "^0.39.1"
 qiskit-quantuminspire = "^0.3.0"
 
 [tool.poetry.group.dev.dependencies]
-qi-compute-api-client = "^0.39.0"
 requests = "^2.32.3"
 black = {extras = ["jupyter"], version = "^24.4.2"}
 coverage = {extras = ["toml"], version = "^7.6.10"}
