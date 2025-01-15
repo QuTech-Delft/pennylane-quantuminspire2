@@ -2034,12 +2034,12 @@ kokkos = ["pennylane-lightning-kokkos"]
 
 [[package]]
 name = "pennylane-qiskit"
-version = "0.39.1"
+version = "0.40.0"
 description = "PennyLane plugin for Qiskit"
 optional = false
 python-versions = "*"
 files = [
-    {file = "PennyLane_qiskit-0.39.1-py3-none-any.whl", hash = "sha256:aa0cb61a9fa2a0e838bb812bdc30226faf7ad0223f64b9f1c6910579ce923217"},
+    {file = "PennyLane_qiskit-0.40.0-py3-none-any.whl", hash = "sha256:6295926b5acd2e96515459fb7c9dddeadf2c70e2a5f2807c6685fb025c7c4408"},
 ]
 
 [package.dependencies]
@@ -4009,4 +4009,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "1fda45d3457466bb23b7420396b68df2849444b85112ec796679d496c7c7a9b6"
+content-hash = "29fa94b4c71f4583c4ff42e6db7b987a5f1a6aa7446eaa87bdf59629acb28e3a"
