@@ -34,7 +34,7 @@ def test_qiskit_error_is_wrapped_as_device_error(mocker: MockerFixture, QI2_back
     # Arrange
     device = QI2Device(backend=QI2_backend)
     error_message = "Result failed ,  Experiment failed. System Message: Simulated Error"
-    mocker.patch('pennylane_qiskit.remote.RemoteDevice.execute', side_effect=QiskitError(error_message))
+    mocker.patch("pennylane_qiskit.remote.RemoteDevice.execute", side_effect=QiskitError(error_message))
 
     @qml.qnode(device=device)
     # untyped decorator in pennylane, so mypy will complain here

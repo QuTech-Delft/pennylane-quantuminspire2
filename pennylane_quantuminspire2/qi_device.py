@@ -22,9 +22,8 @@ class QI2Device(RemoteDevice):  # type: ignore[misc]
         circuits: QuantumTape_or_Batch,
         execution_config: ExecutionConfig = DefaultExecutionConfig,
     ) -> Result_or_ResultBatch:
-        
+
         try:
-            # Your existing execution code here
             results = super().execute(circuits, execution_config)
             return results
         except QiskitError as e:
