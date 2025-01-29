@@ -9,7 +9,6 @@ repository = "https://github.com/qutech-delft/pennylane-quantuminspire2"
 classifiers = [
   'Development Status :: 4 - Beta',
   'Programming Language :: Python :: 3',
-  'Programming Language :: Python :: 3.9',
   'Programming Language :: Python :: 3.10',
   'Programming Language :: Python :: 3.11',
   'Programming Language :: Python :: 3.12',
@@ -17,9 +16,9 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 pennylane-qiskit = "^0.40.0"
-qiskit-quantuminspire = "^0.3.0"
+qiskit-quantuminspire = "^0.7.0"
 
 [tool.poetry.group.dev.dependencies]
 requests = "^2.32.3"
