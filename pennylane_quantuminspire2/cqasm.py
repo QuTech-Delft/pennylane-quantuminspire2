@@ -9,5 +9,6 @@ def dumps(q_node: qml.QNode) -> str:
     openqasm_code = tape().to_openqasm()
 
     quantum_circuit = QuantumCircuit.from_qasm_str(openqasm_code)
+    result: str = cqasm.dumps(quantum_circuit)
 
-    return cqasm.dumps(quantum_circuit)
+    return result
