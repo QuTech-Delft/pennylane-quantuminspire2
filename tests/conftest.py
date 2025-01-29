@@ -2,6 +2,7 @@ from typing import Sequence
 
 import pytest
 from compute_api_client import BackendStatus, BackendType
+from pytest_mock import MockerFixture
 from qiskit_quantuminspire.qi_backend import QIBackend
 
 
@@ -28,9 +29,13 @@ def create_backend(id: int = 1, name: str = "qi_backend") -> BackendType:
 
 
 @pytest.fixture
-def QI2_backend() -> BackendType:
+def QI2_backend(mocker: MockerFixture) -> BackendType:
     """Backend fixture for fields we care about."""
-    return create_backend()
+    backend_object = create_backend()
+
+    mock_property = mocker.PropertyMock(return_value=True)
+    mocker.patch.object(type(backend_object), "available", mock_property)
+    return backend_object
 
 
 @pytest.fixture
