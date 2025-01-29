@@ -14,7 +14,6 @@ def test_device_backends(mocker: MockerFixture, QI2_backend: QIBackend) -> None:
     device = QI2Device(backend=QI2_backend)
 
     @qml.qnode(device=device)
-    # untyped decorator in pennylane, so mypy will complain here
     def quantum_function():  # type: ignore
         qml.Hadamard(wires=[0])
         return qml.expval(qml.PauliX(wires=[0]))
