@@ -1,9 +1,11 @@
+from typing import Any
+
 import pennylane as qml
 from qiskit import QuantumCircuit
 from qiskit_quantuminspire import cqasm
 
 
-def dumps(q_node: qml.QNode, **options) -> str:
+def dumps(q_node: qml.QNode, **options: Any) -> str:
     """Return the cQASM representation of the quantum function."""
     tape = qml.workflow.construct_tape(q_node)
     openqasm_code = tape(**options).to_openqasm()
