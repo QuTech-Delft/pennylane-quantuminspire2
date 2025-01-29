@@ -263,8 +263,9 @@
     <span class="n">openqasm_code</span> <span class="o">=</span> <span class="n">tape</span><span class="p">()</span><span class="o">.</span><span class="n">to_openqasm</span><span class="p">()</span>
 
     <span class="n">quantum_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">from_qasm_str</span><span class="p">(</span><span class="n">openqasm_code</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">cqasm</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">quantum_circuit</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">cqasm</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">quantum_circuit</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">result</span></div>
 
 </pre></div>
         </article>

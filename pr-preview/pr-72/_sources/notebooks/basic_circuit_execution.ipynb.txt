@@ -100,18 +100,18 @@
    ]
   },
   {
-   "metadata": {},
    "cell_type": "code",
-   "outputs": [],
    "execution_count": null,
+   "id": "e6bbe6af-9908-46cb-8638-8f29966fbf61",
+   "metadata": {},
+   "outputs": [],
    "source": [
     "@qml.qnode(demo_device)\n",
     "def bell_state():\n",
     "    qml.Hadamard(wires=0)\n",
     "    qml.CNOT(wires=[0, 1])\n",
     "    return [qml.expval(qml.Z(x)) for x in range(2)]"
-   ],
-   "id": "622212b2440c68ca"
+   ]
   },
   {
    "cell_type": "markdown",
