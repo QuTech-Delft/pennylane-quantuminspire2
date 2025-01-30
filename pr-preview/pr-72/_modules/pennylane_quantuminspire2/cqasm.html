@@ -259,10 +259,15 @@
 
 <div class="viewcode-block" id="dumps">
 <a class="viewcode-back" href="../../api/pennylane_quantuminspire2.html#pennylane_quantuminspire2.cqasm.dumps">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">dumps</span><span class="p">(</span><span class="n">q_node</span><span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">QNode</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dumps</span><span class="p">(</span><span class="n">q_node</span><span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">QNode</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the cQASM representation of the quantum function.&quot;&quot;&quot;</span>
-    <span class="n">tape</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">construct_tape</span><span class="p">(</span><span class="n">q_node</span><span class="p">)</span>
-    <span class="n">openqasm_code</span> <span class="o">=</span> <span class="n">tape</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">to_openqasm</span><span class="p">()</span>
+
+    <span class="n">q_node</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">openqasm_code</span> <span class="o">=</span> <span class="n">q_node</span><span class="o">.</span><span class="n">tape</span><span class="o">.</span><span class="n">to_openqasm</span><span class="p">()</span>
+
+    <span class="c1"># As of pennylane v0.40.0 Qnode.tape property is no longer supported and instead the following approach is advised:</span>
+    <span class="c1"># tape = qml.workflow.construct_tape(q_node)</span>
+    <span class="c1"># openqasm_code = tape(*args, **kwargs).to_openqasm()</span>
 
     <span class="n">quantum_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">from_qasm_str</span><span class="p">(</span><span class="n">openqasm_code</span><span class="p">)</span>
     <span class="n">result</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">cqasm</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">quantum_circuit</span><span class="p">)</span>
