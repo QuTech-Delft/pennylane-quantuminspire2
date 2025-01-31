@@ -11,7 +11,7 @@ def dumps(q_node: qml.QNode, *args: Any, **kwargs: Any) -> str:
     q_node.construct(args=args, kwargs=kwargs)
     openqasm_code = q_node.tape.to_openqasm()
 
-    # As of pennylane v0.40.0 Qnode.tape property is no longer supported and instead the following approach is advised:
+    # As of pennylane v0.40.0 Qnode.tape property is deprecated and instead the following approach is advised:
     # tape = qml.workflow.construct_tape(q_node)
     # openqasm_code = tape(*args, **kwargs).to_openqasm()
 
