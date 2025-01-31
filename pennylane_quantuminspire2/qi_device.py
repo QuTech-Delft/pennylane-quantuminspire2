@@ -2,12 +2,9 @@ from typing import Any, Optional, Sequence
 
 from pennylane_qiskit import RemoteDevice
 from qiskit_quantuminspire.qi_backend import QIBackend
-from qiskit_quantuminspire.qi_provider import QIProvider
 
 
 class QI2Device(RemoteDevice):  # type: ignore[misc]
-
-    _qi_provider = QIProvider()
 
     def __init__(self, backend: QIBackend, **kwargs: Any) -> None:
         super().__init__(wires=backend.num_qubits, backend=backend, **kwargs)
