@@ -1,4 +1,4 @@
-from typing import Any, Optional, Sequence
+from typing import Any
 
 from pennylane import DeviceError
 from pennylane.devices.execution_config import DefaultExecutionConfig, ExecutionConfig
@@ -25,11 +25,3 @@ class QI2Device(RemoteDevice):  # type: ignore[misc]
             return results
         except QiskitError as e:
             raise DeviceError(str(e)) from e
-
-    @classmethod
-    def backends(cls) -> Sequence[QIBackend]:
-        return cls._qi_provider.backends()  # type: ignore[no-any-return]
-
-    @classmethod
-    def get_backend(cls, name: Optional[str] = None, id: Optional[int] = None) -> QIBackend:
-        return cls._qi_provider.get_backend(name, id)
