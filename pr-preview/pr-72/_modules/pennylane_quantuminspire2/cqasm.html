@@ -265,7 +265,7 @@
     <span class="n">q_node</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">openqasm_code</span> <span class="o">=</span> <span class="n">q_node</span><span class="o">.</span><span class="n">tape</span><span class="o">.</span><span class="n">to_openqasm</span><span class="p">()</span>
 
-    <span class="c1"># As of pennylane v0.40.0 Qnode.tape property is no longer supported and instead the following approach is advised:</span>
+    <span class="c1"># As of pennylane v0.40.0 Qnode.tape property is deprecated and instead the following approach is advised:</span>
     <span class="c1"># tape = qml.workflow.construct_tape(q_node)</span>
     <span class="c1"># openqasm_code = tape(*args, **kwargs).to_openqasm()</span>
 
