@@ -1,5 +1,6 @@
 from typing import Any
 from qiskit_quantuminspire.qi_backend import QIBackend
+from pennylane_qiskit import RemoteDevice
 
 
 class QI2Device(RemoteDevice):  # type: ignore[misc]
