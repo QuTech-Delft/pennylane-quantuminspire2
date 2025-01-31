@@ -6,6 +6,7 @@ from pennylane_qiskit import RemoteDevice
 from pennylane_qiskit.qiskit_device import QuantumTape_or_Batch, Result_or_ResultBatch
 from qiskit.exceptions import QiskitError
 from qiskit_quantuminspire.qi_backend import QIBackend
+from pennylane_qiskit import RemoteDevice
 
 
 class QI2Device(RemoteDevice):  # type: ignore[misc]
