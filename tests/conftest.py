@@ -6,7 +6,7 @@ from pytest_mock import MockerFixture
 from qiskit_quantuminspire.qi_backend import QIBackend
 
 
-def create_backend(id: int = 1, name: str = "qi_backend") -> BackendType:
+def create_backend(id: int = 1, name: str = "qi_backend") -> QIBackend:
     backend_type = BackendType(
         name=name,
         nqubits=3,
@@ -29,7 +29,7 @@ def create_backend(id: int = 1, name: str = "qi_backend") -> BackendType:
 
 
 @pytest.fixture
-def QI2_backend(mocker: MockerFixture) -> BackendType:
+def QI2_backend(mocker: MockerFixture) -> QIBackend:
     """Backend fixture for fields we care about."""
     backend_object = create_backend()
 
