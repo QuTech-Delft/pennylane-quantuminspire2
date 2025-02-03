@@ -270,7 +270,19 @@
 <section id="execute">
 <h3>Execute<a class="headerlink" href="#execute" title="Link to this heading">¶</a></h3>
 <p>The execute function is the function that gets called by QI2 first. As an argument it gets a <code class="docutils literal notranslate"><span class="pre">QuantumInterface</span></code>, which is what allows you to actually execute your circuit. In the example below, the same circuit is executed 5 times in a row as a simple illustration of the interchanging control between the hybrid and classical domains. Normally, you might want to change your <code class="docutils literal notranslate"><span class="pre">QNode</span></code> (circuit) between each execution based on your results. Refer to <a class="reference download internal" download="" href="../_downloads/37401a34e99ce8cb3a98d02cc88a5bb4/simple.py"><span class="xref download myst">this example</span></a> to see how you can dynamically update your quantum circuit.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">qi</span><span class="p">:</span> <span class="n">QuantumInterface</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_circuit</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+    <span class="nd">@qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">circuit_params</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+        <span class="n">qml</span><span class="o">.</span><span class="n">RX</span><span class="p">(</span><span class="n">circuit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">qml</span><span class="o">.</span><span class="n">RY</span><span class="p">(</span><span class="n">circuit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wires</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">qml</span><span class="o">.</span><span class="n">CNOT</span><span class="p">(</span><span class="n">wires</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">qml</span><span class="o">.</span><span class="n">expval</span><span class="p">(</span><span class="n">qml</span><span class="o">.</span><span class="n">PauliZ</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">circuit</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">qi</span><span class="p">:</span> <span class="n">QuantumInterface</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the classical part of the Hybrid Quantum/Classical Algorithm.</span>
 
 <span class="sd">    Args:</span>

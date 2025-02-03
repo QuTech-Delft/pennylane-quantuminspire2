@@ -12,6 +12,18 @@ The execute function is the function that gets called by QI2 first. As an argume
 
 
 ```python
+
+def generate_circuit(device: Any):
+    @qml.qnode(device)
+    def circuit(circuit_params):  # type: ignore
+        qml.RX(circuit_params[0], wires=0)
+        qml.RY(circuit_params[1], wires=1)
+        qml.CNOT(wires=[0, 1])
+        return qml.expval(qml.PauliZ(0))
+    
+    return circuit
+
+
 def execute(qi: QuantumInterface) -> None:
     """Run the classical part of the Hybrid Quantum/Classical Algorithm.
 
