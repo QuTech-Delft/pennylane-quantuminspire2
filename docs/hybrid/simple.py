@@ -17,7 +17,7 @@ def generate_circuit(device: QI2Device) -> qml.QNode:
     H = qml.Hamiltonian([0.5, 0.3], [qml.PauliZ(0) @ qml.PauliZ(1), qml.PauliX(0) @ qml.PauliX(1)])
 
     @qml.qnode(device)
-    def circuit(params):
+    def circuit(params):  # type: ignore
         qml.RY(params[0], wires=0)
         qml.RY(params[1], wires=1)
         qml.CNOT(wires=[0, 1])
@@ -41,7 +41,7 @@ def execute(qi: QuantumInterface) -> None:
     circuit = generate_circuit(device)
     initial_params = np.array([0.1, 0.2], requires_grad=True)
 
-    def cost_function(params):
+    def cost_function(params):  # type: ignore
         qiskit_circuit = convert_to_qiskit(circuit, params)
         result = backend.run(qiskit_circuit, shots=1024).result()
         counts = result.get_counts()
