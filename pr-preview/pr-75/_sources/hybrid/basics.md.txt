@@ -13,7 +13,7 @@ The execute function is the function that gets called by QI2 first. As an argume
 
 ```python
 
-def generate_circuit(device: Any):
+def generate_circuit(device: QI2Device):
     @qml.qnode(device)
     def circuit(circuit_params):  # type: ignore
         qml.RX(circuit_params[0], wires=0)
