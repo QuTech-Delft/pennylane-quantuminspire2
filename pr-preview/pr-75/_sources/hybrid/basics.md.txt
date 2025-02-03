@@ -13,6 +13,16 @@ The execute function is the function that gets called by QI2 first. As an argume
 
 ```python
 
+from typing import Any, Dict, List
+
+import pennylane as qml
+from pennylane import numpy as np
+from qi2_shared.hybrid.quantum_interface import QuantumInterface
+from qiskit import QuantumCircuit
+from qiskit_quantuminspire.hybrid.hybrid_backend import QIHybridBackend
+
+from pennylane_quantuminspire2 import cqasm
+
 def generate_circuit(device: QI2Device):
     @qml.qnode(device)
     def circuit(circuit_params):  # type: ignore
