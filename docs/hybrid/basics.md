@@ -23,16 +23,6 @@ from qiskit_quantuminspire.hybrid.hybrid_backend import QIHybridBackend
 
 from pennylane_quantuminspire2 import cqasm
 
-def generate_circuit(device: QI2Device):
-    @qml.qnode(device)
-    def circuit(circuit_params):  # type: ignore
-        qml.RX(circuit_params[0], wires=0)
-        qml.RY(circuit_params[1], wires=1)
-        qml.CNOT(wires=[0, 1])
-        return qml.expval(qml.PauliZ(0))
-    
-    return circuit
-
 
 def execute(qi: QuantumInterface) -> None:
     """Run the classical part of the Hybrid Quantum/Classical Algorithm.
@@ -59,7 +49,12 @@ def execute(qi: QuantumInterface) -> None:
     device  = QI2Device(backend=backend)
     circuit_params = np.array([0.1, 0.2], requires_grad=True)
 
-    circuit = generate_circuit(device)
+    @qml.qnode(device=device)
+    def circuit(params):  # type: ignore
+        qml.RX(params[0], wires=0)
+        qml.RY(params[1], wires=1)
+        qml.CNOT(wires=[0, 1])
+        return qml.expval(qml.PauliZ(0))
 
     for _ in range(1, 5):
         circuit_str = cqasm.dumps(circuit, circuit_params)
